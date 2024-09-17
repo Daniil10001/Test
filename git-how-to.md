@@ -22,8 +22,8 @@ Account -> Settings -> SSH and GPG keys -> New SSH key
 
 #How to clone GIT reposytory
 
-git clone url
+`git clone url`
 
 or
 
-git clone git@github.com:username/reposytory.git
+`git clone git@github.com:username/reposytory.git`
