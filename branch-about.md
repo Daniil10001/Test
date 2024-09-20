@@ -13,12 +13,3 @@ Create a new branch: git checkout -b <new_branch_name>.
 Create a link between the remote and local repository using the command: git remote add <repo_name> link.
 Save the changes using the git commit command.
 In the terminal, enter the command: git push origin <branch>.
-
-
-
-
-
-
-
-
-
