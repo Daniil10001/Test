@@ -27,7 +27,7 @@ def _main_():
              raise Exception('Float values not allowed')
           else:
              raise Exception('String is not allowed')
-       print(int(inp)/255*3.3)
+       print(int(inp)/255*3.3, 'v')
        GPIO.output(DAC,dec2bin(int(inp)))
    except Exception as e:
        print(e)

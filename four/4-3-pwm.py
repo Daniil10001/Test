@@ -48,6 +48,7 @@ def _main_():
        if not (0<=dc<=1):
           raise Exception('Duty cycle allowed from 0.0 to 1.0')
        duty_cycle=dc
+       print(3.3*dc, 'v')
    except Exception as e:
        print(e)
        return
