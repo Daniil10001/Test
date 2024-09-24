@@ -22,15 +22,19 @@ tme=1
 def Generator():
     global tme, wk
     i=-1
-    while wk:
+    while True:
       while i<255:
          i+=1
          GPIO.output(DAC,dec2bin(i))
          time.sleep(tme/255)
+         if not wk:
+            return
       while i>0:
          i-=1
          GPIO.output(DAC,dec2bin(i))
          time.sleep(tme/255)
+         if not wk:
+            return
 
 th=threading.Thread(target=Generator, args=())
 wk=True
