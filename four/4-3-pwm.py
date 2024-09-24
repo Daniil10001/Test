@@ -7,7 +7,7 @@ alw_pins=[21,20,26,16,19,25,23,24]
 pin=0
 while True:
    try:
-     pin=int(input())
+     pin=int(input('Set up pin:'))
      if not (pin in alw_pins):
         print('Not allowed pin')
      print('Ok')
@@ -18,7 +18,7 @@ while True:
 GPIO.setup(pin,GPIO.OUT,initial=0)
 
 duty_cycle=1
-N_up=1000
+N_up=100
 T=1/N_up
 
 def Generator():
