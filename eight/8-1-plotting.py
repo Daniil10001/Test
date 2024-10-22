@@ -14,11 +14,20 @@ for i in exp_settings.Experiment:
     time_st[exp_data.Experiment==i]*=exp_settings.dt[i]
     volts[exp_data.Experiment==i]*=exp_settings.dV[i]
 data=pd.DataFrame({'E':exp_data.Experiment,'V':volts, 'T':time_st})
+
+X,Y=[],[]
+for i in exp_settings['Experiment']:
+    datap=data[data.E==i]
+    X.append(exp_settings.Frequency[i])
+    Y.append(np.max(datap['T']))
+X,Y=np.array(X),np.array(Y)
+
 labels=[r'Эксперимент {0} $\nu_{2}={1}Hz$'.format(i+1, exp_settings.Frequency[i],"{disc}") for i in exp_settings.Experiment]
 #print(labels)
 
 fig, ax= plt.subplots(figsize=(9,6))
 
+ax.set_title("Зависимость напряжения на конденсаторе от времени зарядки")
 ax.set_ylim(np.min(volts), np.max(volts)*1.05)
 ax.set_xlim(0, np.max(time_st)*1.05)
 
@@ -32,20 +41,17 @@ ax.set_xlabel(r'Время эксперимента $\tau$, с')
 for i in exp_settings['Experiment']:
     datap=data[data.E==i]
     ax.plot(datap['T'],datap.V,'--o', label=labels[i], linewidth=0.5, markersize=2.)
+
+ax.text(4, 0.75, 'Время зарядки {0}c'.format(np.round(np.average(Y))), fontsize=12)
 ax.legend()
 fig.tight_layout()
 
 
 fig1, ax1= plt.subplots(figsize=(9,6))
+ax1.set_title("Зависимость времени зарядки от частоты дискретизации")
 ax1.minorticks_on()
 ax1.grid(which='major')
 ax1.grid(which='minor', linestyle=':')
-X,Y=[],[]
-for i in exp_settings['Experiment']:
-    datap=data[data.E==i]
-    X.append(exp_settings.Frequency[i])
-    Y.append(np.max(datap['T']))
-X,Y=np.array(X),np.array(Y)
 ax1.scatter(X,Y, 4.,'r', marker='o')
 ax1.set_ylabel(r'Время зарядки $\tau$, с')
 ax1.set_xlabel(r'Частота дискраетизации $\nu$, Гц')
