@@ -46,7 +46,7 @@ for i in exp_settings['Experiment']:
     X.append(exp_settings.Frequency[i])
     Y.append(np.max(datap['T']))
 X,Y=np.array(X),np.array(Y)
-ax1.scatter(X,Y, 4.,'r', marker='+')
+ax1.scatter(X,Y, 4.,'r', marker='o')
 ax1.set_ylabel(r'Время зарядки $\tau$, с')
 ax1.set_xlabel(r'Частота дискраетизации $\nu$, Гц')
 
