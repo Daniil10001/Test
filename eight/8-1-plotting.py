@@ -40,7 +40,7 @@ ax.set_xlabel(r'Время эксперимента $\tau$, с')
 
 for i in exp_settings['Experiment']:
     datap=data[data.E==i]
-    ax.plot(datap['T'],datap.V,'--o', label=labels[i], linewidth=0.5, markersize=2.)
+    ax.plot(datap['T'],datap.V,'--o', label=labels[i], linewidth=0.5, markersize=2., markevery=5)
 
 ax.text(4, 0.75, 'Время зарядки {0}c'.format(np.round(np.average(Y))), fontsize=12)
 ax.legend()
